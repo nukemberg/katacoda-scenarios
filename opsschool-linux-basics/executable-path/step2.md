@@ -12,11 +12,17 @@ export VAR=test
 /root/bin/hello
 ```{{execute}}
 
-Edit the `fork_exec.py` file and modify the exec call to use the `execve()` call which allows resetting the environment variables vector:
+Edit the `fork_exec.py`{{edit}} file and modify the exec call to use the `execve()` call which allows resetting the environment variables vector:
 ```python
 os.execve("/root/bin/hello", ["hello"], {"VARNAME": "value"})
 ```
 Then run `./fork_exec.py`{{execute}}
+
+## Environment variables do not bubble up
+Open a new shell by executing `bash`{{execute}} and `export SOME_VAR=test`{{execute}}
+Use the `env`{{execute}} command to see the variable is defined, then `exit`{{execute}} the shell and run `env` again. Is the variable defined in the parent shell?
+
+You can verify which shell it is by printing the PID of the shell: `echo $$`{{execute}}
 
 ## The default environment
 Linux distributions have various ways of setting default environment variables. The biggest difference is between login/interactive sessions (e.g. when you login using SSH) and daemons/services. For example, [`pam_env`](https://man7.org/linux/man-pages/man8/pam_env.8.html) is often used for login sessions and when a shell is started it may export variables in `.profile`, `.bashrc` etc. For systems using _systemd_, daemons have their environment [defined in the unit files](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html) either directly or by referring to an environment file.

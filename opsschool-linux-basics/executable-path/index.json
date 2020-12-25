@@ -3,7 +3,14 @@
   "description": "",
   "difficulty": "Beginner",
   "time": "30 minutes",
+  "files": ["fork_exec.py", "exec.py"],
   "details": {
+    "assets": {"host01": [
+      {"file": "fork_exec.py", "target": "/root/"},
+      {"file": "hello.c", "target": "/root"}, 
+      {"file": "exec.c", "target": "/root/"}, 
+      {"file": "exec.py", "target": "/root/", "chmod": "+x"}
+    ]},
     "steps": [
       {
         "title": "Step 1",
@@ -27,16 +34,19 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "code": "prep.sh"
     },
     "finish": {
       "text": "finish.md"
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "terminal",
+    "uieditorpath": "/root/",
+    "showide": true
   },
   "backend": {
-    "imageid": "ubuntu1904"
+    "imageid": "ubuntu:2004"
   }
 }

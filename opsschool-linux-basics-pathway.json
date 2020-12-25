@@ -3,7 +3,7 @@
     "description": "This course teaches the basics how how Linux works. It covers executables, the linker, processes, files and file systems",
     "courses": [
         {
-            "course_id": "executable_path",
+            "course_id": "executable-path",
             "title": "Executables and PATH"
         }
     ]

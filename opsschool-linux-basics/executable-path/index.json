@@ -6,10 +6,8 @@
   "files": ["fork_exec.py", "exec.py"],
   "details": {
     "assets": {"host01": [
-      {"file": "fork_exec.py", "target": "/root/"},
-      {"file": "hello.c", "target": "/root"}, 
-      {"file": "exec.c", "target": "/root/"}, 
-      {"file": "exec.py", "target": "/root/", "chmod": "+x"}
+      {"file": "fork_exec.py", "target": "/root/", "chmod": "+x"},
+      {"file": "hello.c", "target": "/root"}
     ]},
     "steps": [
       {

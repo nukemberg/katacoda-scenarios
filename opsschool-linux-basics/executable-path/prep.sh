@@ -1,6 +1,8 @@
 #!/bin/bash
 
 mkdir /root/bin
-apt update
-apt install -y build-essential strace ltrace
+apt update > /dev/null
+apt install -y build-essential strace ltrace > /dev/null
 gcc -o /root/bin/hello hello.c
+
+echo 'Ready!'

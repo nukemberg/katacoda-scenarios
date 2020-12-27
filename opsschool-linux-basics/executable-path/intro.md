@@ -23,7 +23,7 @@ if (pid == 0) {
     execlp("/bin/ls", "ls", "-", "/", NULL);
 }
 ```
-If you shell didn't _fork()_ before running _execlp()_, the current shell would terminate when `ls` finished because _exec_ call replace the current process memory with the executable image of the new binary. _fork_ makes a new process (which is a copy of the parent), and _exec_ convert the process in which it was called to a new program. When _exec_ is called some process attributes are cleared and some are retained. In particular the environment variables are only reset when using the _e_ variants of _exec_, e.g. `execve()`, `execvpe()`, `execle()`. The process name attribute is reset to the first argument of the argument vector. 
+If you shell didn't _fork()_ before running _execlp()_, the current shell would terminate when `ls` finished because _exec_ call replaces the current process memory with the executable image of the new binary. _fork_ makes a new process (which is a copy of the parent), and _exec_ converts the process in which it was called to a new program. When _exec_ is called some process attributes are cleared and some are retained. In particular the environment variables are only reset when using the _e_ variants of _exec_, e.g. `execve()`, `execvpe()`, `execle()`. The process name attribute is reset to the first argument of the argument vector. 
 
 The POSIX standard also requires that _/bin/sh_ is provided, and it can optionally be used to execute things. The `system(3)` call is also used to execute processes, and does fork/exec for you, but with a shell. It is equivalent to:
 ```C
@@ -34,3 +34,8 @@ if (pid == 0) {
 ```
 
 Let's explore how executable behave on Linux. The majority of exercises will use Python as the API is similar to C, but even if you don't know Python or C it shouldn't be a problem - just follow the instructions and comments and the files.
+
+# Katacoda
+Katacoda is the platform this course is running on, integrating the instructions with a VM instance. On the right side of the screen you will have a terminal tab and an IDE tab. The IDE is fully featured VSCode, but of course you can edit files with vim if you prefer.
+
+Note that some code snippets are clickable (look for ⏎ icon) and will execute the command in the terminal when clicked on. 
